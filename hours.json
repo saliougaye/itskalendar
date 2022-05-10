@@ -1,0 +1,67 @@
+[
+    {
+        "_id": 19,
+        "days": [
+            {
+                "_id": "627ac1e9d563bfa8d690ba78",
+                "courseName": "DevO-2",
+                "timeStart": "9.00",
+                "timeEnd": "13.00",
+                "date": "2022-05-11T00:00:00.000Z",
+                "required": false,
+                "module": "PROJECT WORK E AGILE MANAGEMENT - ANNO 2",
+                "professor": "GOBBO DANIELE",
+                "room": "Ed.S - L10",
+                "__v": 0
+            },
+            {
+                "_id": "627ac1e9d563bf16c390ba79",
+                "courseName": "DevO-2",
+                "timeStart": "14.00",
+                "timeEnd": "18.00",
+                "date": "2022-05-11T00:00:00.000Z",
+                "required": false,
+                "module": "GESTIONE DATI E BigData",
+                "professor": "RAINIS MAURO",
+                "room": "Ed.S - L10",
+                "__v": 0
+            },
+            {
+                "_id": "627ac1e9d563bfb6e690ba7a",
+                "courseName": "DevO-2",
+                "timeStart": "14.00",
+                "timeEnd": "18.00",
+                "date": "2022-05-12T00:00:00.000Z",
+                "required": false,
+                "module": "CI/CD: Continuous Integration, Continuous Delivery",
+                "professor": "DRI TOMMASO",
+                "room": "Ed.B - L12",
+                "__v": 0
+            },
+            {
+                "_id": "627ac1e9d563bf476890ba7b",
+                "courseName": "DevO-2",
+                "timeStart": "9.00",
+                "timeEnd": "13.00",
+                "date": "2022-05-13T00:00:00.000Z",
+                "required": false,
+                "module": "PROGRAMMARE PER GESTIRE",
+                "professor": "ARCIERO ALESSANDRO",
+                "room": "Ed.S - L10",
+                "__v": 0
+            },
+            {
+                "_id": "627ac1e9d563bfae5890ba7c",
+                "courseName": "DevO-2",
+                "timeStart": "14.00",
+                "timeEnd": "18.00",
+                "date": "2022-05-13T00:00:00.000Z",
+                "required": false,
+                "module": "GESTIONE DATI E BigData",
+                "professor": "RAINIS MAURO",
+                "room": "Ed.S - L10",
+                "__v": 0
+            }
+        ]
+    }
+]
