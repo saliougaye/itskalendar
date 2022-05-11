@@ -1,8 +1,5 @@
-# itskalendar
+# ITS Kalendar Mobile App
 
-A new Flutter project.
 
-## Todo
-- Next Week Button
-- Refactor
-- Loading only the list of lessons
+## To Do
+- Font Family

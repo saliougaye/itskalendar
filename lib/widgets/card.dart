@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:itskalendar/blocs/theme/theme_bloc.dart';
 import 'package:itskalendar/models/course_hours.dart';
 import 'package:intl/intl.dart';
 import 'package:itskalendar/utils/add_space.dart';
@@ -37,7 +35,7 @@ class LessonCard extends StatelessWidget {
                     color: Theme.of(context).shadowColor,
                     spreadRadius: 2,
                     blurRadius: 7,
-                    offset: Offset(0, 3))
+                    offset: const Offset(0, 3))
               ]),
           child: Column(
             children: [_titleCard(context,_getDateString(day)), ...cards],

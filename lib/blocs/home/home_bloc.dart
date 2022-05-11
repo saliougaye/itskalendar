@@ -23,6 +23,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _onAppLoaded(AppLoaded event, Emitter<HomeState> emit)  async {
 
+    emit(HomeLoading());
+
     try {
 
       final courses = await apiService.getCourses();
@@ -48,7 +50,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     } catch (e) {
       emit(
-        const HomeLoadingFailed(message: 'Failed to laod')
+        const HomeLoadingFailed(message: 'Sorry, but something unexpected happened')
       );
     }
 
@@ -62,10 +64,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _onCourseChanged(CourseChanged event, Emitter<HomeState> emit) async {
 
-    // TODO fix widget when loading
-    // emit(
-    //   HomeLoading()
-    // );
+    emit(
+      HomeLoading()
+    );
 
 
     try {
@@ -88,7 +89,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     } catch (e) {
       emit(
-        const HomeLoadingFailed(message: 'Failed to laod')
+        const HomeLoadingFailed(message: 'Sorry, but something unexpected happened')
       );
     }
   }

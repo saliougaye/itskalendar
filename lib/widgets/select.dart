@@ -51,7 +51,7 @@ class Select extends StatelessWidget {
       ),
       onChanged: onChange,
       iconSize: 30,
-      buttonHeight: 60,
+      buttonHeight: 50,
       buttonPadding: const EdgeInsets.only(left: 20, right: 10),
       dropdownDecoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
