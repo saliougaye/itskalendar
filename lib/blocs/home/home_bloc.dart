@@ -33,7 +33,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
 
       emit(
-        HomeLoaded(courseHours: courseHours, courses: courses)
+        HomeLoaded(
+          course: course,
+          courseHours: courseHours, 
+          courses: courses
+        )
       );
 
     } catch (e) {
@@ -51,6 +55,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> _onCourseChanged(CourseChanged event, Emitter<HomeState> emit) async {
+
+    // TODO fix widget when loading
+    // emit(
+    //   HomeLoading()
+    // );
+
+
     try {
       final courses = await apiService.getCourses();
 
@@ -60,7 +71,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
 
       emit(
-        HomeLoaded(courseHours: courseHours, courses: courses)
+        HomeLoaded(
+          course: course,
+          courseHours: courseHours, 
+          courses: courses
+        )
       );
 
     } catch (e) {

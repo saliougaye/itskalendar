@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:itskalendar/models/course_hours.dart';
 import 'package:intl/intl.dart';
+import 'package:itskalendar/utils/add_space.dart';
 
 class LessonCard extends StatelessWidget {
 
@@ -20,7 +21,7 @@ class LessonCard extends StatelessWidget {
       cards.insert(1, const Divider(
          color: Colors.grey, 
       ));
-      cards.insert(2, const SizedBox(height: 10,));
+      cards.insert(2, addSpace(10, 0));
     }
 
 
@@ -48,9 +49,9 @@ class LessonCard extends StatelessWidget {
   Widget _lessonCard(Day day) {
     return Column(
       children: [
-        const SizedBox(height: 10,),
+        addSpace(10, 0),
         _lesson(day),
-        const SizedBox(height: 10,),
+        addSpace(10, 0),
       ],
     );
   }
@@ -58,11 +59,24 @@ class LessonCard extends StatelessWidget {
 
   String _getDateString(DateTime date) {
 
-    if(DateTime.now().difference(date).inDays == 0) {
+    final dateReformat = DateTime(
+      date.year,
+      date.month,
+      date.day
+    );
+
+    final now = DateTime.now();
+
+    final dateDiff = DateTime(dateReformat.year, dateReformat.month, dateReformat.day)
+      .difference(
+        DateTime(now.year, now.month, now.day)
+      );
+
+    if(dateDiff.inDays == 0) {
       return "Oggi";
     }
 
-    if(DateTime.now().difference(date).inDays == 1) {
+    if(dateDiff.inDays == 1) {
       return  "Domani";
     }
 
@@ -70,7 +84,7 @@ class LessonCard extends StatelessWidget {
 
 
 
-    return dateFormatter.format(date);
+    return dateFormatter.format(dateReformat);
   }
 
   Widget _titleCard(String title) {
@@ -79,7 +93,7 @@ class LessonCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const FaIcon(FontAwesomeIcons.calendarDay),
-        const SizedBox(width: 10,),
+        addSpace(0, 10),
         Text(
           title,
           style: const TextStyle(
@@ -110,11 +124,11 @@ class LessonCard extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 3, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 3, 0),
                   child: Text(
-                    day.module,
+                    day.module ?? "",
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold
                     ),
@@ -129,7 +143,7 @@ class LessonCard extends StatelessWidget {
                       FontAwesomeIcons.clock,
                       size: 15,
                     ),
-                    const SizedBox(width: 5,),
+                    addSpace(0, 5),
                     Text(
                       '${day.timeStart} - ${day.timeEnd}',
                       style: const TextStyle(
@@ -140,7 +154,7 @@ class LessonCard extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 10,),
+          addSpace(10, 0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -172,9 +186,9 @@ class LessonCard extends StatelessWidget {
                       FontAwesomeIcons.locationDot,
                       size: 15,
                     ),
-                    const SizedBox(width: 5,),
+                    addSpace(0, 5),
                     Text(
-                      day.room,
+                      day.room ?? "",
                       style: const TextStyle(
                         
                       ),)

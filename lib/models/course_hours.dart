@@ -28,9 +28,9 @@ class Day {
   final String timeEnd;
   final DateTime date;
   final bool required;
-  final String module;
+  final String? module;
   final String professor;
-  final String room;
+  final String? room;
   final int v;
 
   

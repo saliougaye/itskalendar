@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 class Select extends StatelessWidget {
   final List<String> items;
   final String? value;
-  const Select({Key? key, required this.items, this.value}) : super(key: key);
+  final void Function(String?) onChange;
+
+  const Select({Key? key, required this.items, this.value, required this.onChange}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class Select extends StatelessWidget {
           ),
         ),
       ),
-      onChanged: (value) {},
+      onChanged: onChange,
       iconSize: 30,
       buttonHeight: 60,
       buttonPadding: const EdgeInsets.only(left: 20, right: 10),

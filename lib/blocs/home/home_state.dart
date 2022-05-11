@@ -14,10 +14,11 @@ class HomeLoading extends HomeState {}
 
 
 class HomeLoaded extends HomeState {
+  final String? course;
   final List<CourseHours> courseHours;
   final List<String> courses;
 
-  const HomeLoaded({ required this.courseHours, required this.courses });
+  const HomeLoaded({ this.course, required this.courseHours, required this.courses });
 
   @override
   List<Object> get props => [courseHours, courses];
