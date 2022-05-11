@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'ITS Kalendar',
             theme: state.appThemeData,
+            debugShowCheckedModeBanner: false,
             home: const SafeArea(
               child: Home(),
             ),
