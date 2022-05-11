@@ -6,28 +6,26 @@ import 'package:intl/intl.dart';
 
 class LessonCard extends StatelessWidget {
 
-  final Day morning;
-  final Day? afternoon;
+  final DateTime day;
+  final List<Day> lessons;
 
-  const LessonCard({Key? key, required this.morning, this.afternoon}) : super(key: key);
+  const LessonCard({Key? key, required this.day, required this.lessons}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
+    final cards = lessons.map((e) => _lessonCard(e)).toList();
 
-    List<Widget> widgets = [_lessonCard(morning)];
-    if(afternoon != null) {
-      widgets.add(const Divider(
-        color: Colors.grey, 
+    if(cards.length == 2) {
+      cards.insert(1, const Divider(
+         color: Colors.grey, 
       ));
-      widgets.add(const SizedBox(height: 10,));
-      widgets.add(_lessonCard(afternoon!));
-      
+      cards.insert(2, const SizedBox(height: 10,));
     }
 
 
     return Container(
-      height: afternoon != null ? 260 : 130,
+      height: lessons.length == 2 ? 230 : 130,
        padding: const EdgeInsets.all(15),
        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
@@ -35,14 +33,14 @@ class LessonCard extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: Colors.grey,
-              spreadRadius: 5,
+              spreadRadius: 2,
               blurRadius: 7,
               offset: Offset(0, 3)
             )
           ]
        ),
        child: Column(
-         children: widgets,
+         children: [_titleCard(_getDateString(day)), ...cards],
        )
     );
   }
@@ -50,7 +48,6 @@ class LessonCard extends StatelessWidget {
   Widget _lessonCard(Day day) {
     return Column(
       children: [
-        _titleCard(_getDateString(day.date)),
         const SizedBox(height: 10,),
         _lesson(day),
         const SizedBox(height: 10,),
