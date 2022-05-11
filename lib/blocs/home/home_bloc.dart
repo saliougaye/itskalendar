@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:itskalendar/constants/strings.dart';
 import 'package:itskalendar/models/course_hours.dart';
 import 'package:itskalendar/services/api_service.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -12,8 +14,9 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   final ApiService apiService;
+  final SharedPreferences sharedPreferences;
 
-  HomeBloc({ required this.apiService }) : super(HomeLoading()) {
+  HomeBloc({ required this.apiService, required this.sharedPreferences }) : super(HomeLoading()) {
     on<AppLoaded>(_onAppLoaded);
     on<CourseChanged>(_onCourseChanged);
   }
@@ -25,10 +28,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final courses = await apiService.getCourses();
 
       List<CourseHours> courseHours = List.empty(growable: true);
-      final course = event.initialCourse;
+      final course = event.initialCourse ?? sharedPreferences.getString(AppStrings.CourseSharedPreferenceKey);
+
+
 
       if(course != null) {
         courseHours = await apiService.getLessons(course, _getFirstDayOfTheWeek());
+        sharedPreferences.setString(AppStrings.CourseSharedPreferenceKey, course);
       }
 
 
@@ -77,6 +83,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           courses: courses
         )
       );
+
+      sharedPreferences.setString(AppStrings.CourseSharedPreferenceKey, course);
 
     } catch (e) {
       emit(

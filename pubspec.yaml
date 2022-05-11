@@ -42,7 +42,9 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^8.0.1
   collection: ^1.15.0
-
+  shared_preferences: ^2.0.13
+  enum_to_string: ^2.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -18,10 +18,7 @@ class Select extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             e,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.button,
             textAlign: TextAlign.center,
           ),
         ),
@@ -32,26 +29,24 @@ class Select extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(color: Colors.white)
+          borderSide: BorderSide(color: Theme.of(context).focusColor)
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: const BorderSide(color: Colors.white)
+          borderSide: BorderSide(color: Theme.of(context).focusColor)
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(color: Colors.white)
+          borderSide: BorderSide(color: Theme.of(context).focusColor)
         ),
         filled: true,
-        fillColor: Colors.white
+        fillColor: Theme.of(context).focusColor
       ),
       hint: Container(
         alignment: Alignment.center,
-        child: const Text(
+        child: Text(
           'Please, Select the course',
-          style: TextStyle(
-            fontSize: 14,
-          ),
+          style: Theme.of(context).textTheme.caption,
         ),
       ),
       onChanged: onChange,
@@ -60,6 +55,7 @@ class Select extends StatelessWidget {
       buttonPadding: const EdgeInsets.only(left: 20, right: 10),
       dropdownDecoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
+        color: Theme.of(context).focusColor
       ),
       
     );
