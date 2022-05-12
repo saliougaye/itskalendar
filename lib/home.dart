@@ -40,15 +40,18 @@ class Home extends StatelessWidget {
                   content: const Text('Refreshing...'),
                   behavior: SnackBarBehavior.floating,
                   width: 110,
-                  duration: const Duration(seconds: 1),
-                  backgroundColor: Theme.of(context).secondaryHeaderColor,
+                  duration: const Duration(milliseconds: 300),
+                  backgroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
                   
                 )
               );
               context.read<HomeBloc>()
                 .add(AppLoaded(initialCourse: initialCourse ));
             },
-            child: const Icon(Icons.refresh),
+            child: Icon(
+              Icons.refresh,
+              color: Theme.of(context).floatingActionButtonTheme.foregroundColor,
+            ),
             backgroundColor: Theme.of(context).secondaryHeaderColor,
           ),
         );

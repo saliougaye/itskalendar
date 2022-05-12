@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:itskalendar/models/course_hours.dart';
-import 'package:intl/intl.dart';
 import 'package:itskalendar/utils/add_space.dart';
+import 'package:itskalendar/utils/string_date.dart';
 
 class LessonCard extends StatelessWidget {
+
   final DateTime day;
   final List<Day> lessons;
 
@@ -38,7 +39,7 @@ class LessonCard extends StatelessWidget {
                     offset: const Offset(0, 3))
               ]),
           child: Column(
-            children: [_titleCard(context,_getDateString(day)), ...cards],
+            children: [_titleCard(context, getDateString(day)), ...cards],
           ));
   }
 
@@ -52,27 +53,6 @@ class LessonCard extends StatelessWidget {
     );
   }
 
-  String _getDateString(DateTime date) {
-    final dateReformat = DateTime(date.year, date.month, date.day);
-
-    final now = DateTime.now();
-
-    final dateDiff =
-        DateTime(dateReformat.year, dateReformat.month, dateReformat.day)
-            .difference(DateTime(now.year, now.month, now.day));
-
-    if (dateDiff.inDays == 0) {
-      return "Oggi";
-    }
-
-    if (dateDiff.inDays == 1) {
-      return "Domani";
-    }
-
-    final dateFormatter = DateFormat("EEEE d MMMM");
-
-    return dateFormatter.format(dateReformat);
-  }
 
   Widget _titleCard(BuildContext context, String title) {
     return Row(

@@ -64,7 +64,11 @@ class AppThemes {
        ),
        secondaryHeaderColor: AppColors.HeaderColorLightMode,
        focusColor: AppColors.BackgroundColorLightMode,
-       shadowColor: AppColors.ShadowColorLightMode
+       shadowColor: AppColors.ShadowColorLightMode,
+       colorScheme: ColorScheme.light(secondary: AppColors.HeaderColorLightMode),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          foregroundColor: Colors.white
+        )
      ),
      AppTheme.dark: ThemeData(
        backgroundColor: AppColors.BackgroundColorDarkMode,
@@ -119,7 +123,14 @@ class AppThemes {
        ),
        secondaryHeaderColor: AppColors.HeaderColorDarkMode,
        focusColor: AppColors.BackgroundColorDarkMode,
-       shadowColor: AppColors.ShadowColorDarkmode
+       shadowColor: AppColors.ShadowColorDarkmode,
+       colorScheme: ColorScheme.dark(
+         secondary: AppColors.HeaderColorLightMode,
+
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          foregroundColor: Colors.white
+        )
      )
    };
 }
